@@ -1,7 +1,7 @@
 import streamlit as st
 from buildmockdb import create_db
 from metrics import dashboard_loja
-from charts import grafico_faturamento_loja, grafico_funil
+from charts import grafico_faturamento_loja, grafico_funil, grafico_dashboardlojas
 
 st.set_page_config(
     page_title="Dashboard Audiologia",
@@ -33,7 +33,7 @@ col1.metric(
 
 col2.metric(
     "Aparelhos vendidos",
-    int(df["quantidade"].sum())
+    int(df["quantidade_aparelhos"].sum())
 )
 
 col3.metric(
@@ -41,10 +41,8 @@ col3.metric(
     f"{metrics['pct_conversao'].mean():.1%}"
 )
 
-
-st.subheader("Faturamento por Loja")
-st.pyplot(grafico_faturamento_loja(metrics))
-
+st.subheader("Faturamento por loja")
+st.pyplot(grafico_dashboardlojas(metrics))
 
 st.subheader("Funil Comercial")
 st.pyplot(grafico_funil(df))

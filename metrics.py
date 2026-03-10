@@ -5,7 +5,7 @@ def dashboard_loja(df):
         agendamentos=("agendamento","sum"),
         comparecimentos=("comparecimento","sum"),
         vendas=("venda","sum"),
-        aparelhos=("quantidade","sum"),
+        aparelhos=("quantidade_aparelhos","sum"),
         faturamento=("valor_total","sum")
 
     ).reset_index()
