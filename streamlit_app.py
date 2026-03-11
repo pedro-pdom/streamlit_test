@@ -21,6 +21,8 @@ def carregar_dados():
 
 df = carregar_dados()
 
+df["data_atendimento"] = pd.to_datetime(df["data_atendimento"])
+
 # -------------------------
 # SIDEBAR FILTROS
 # -------------------------
@@ -110,6 +112,12 @@ with colB:
 # -------------------------
 # TABELAS
 # -------------------------
+
+# Formatação dos dados para mostrar na tabela
+metrics['faturamento'] = metrics['faturamento'].map('R${:,.2f}'.format)
+metrics['ticket_medio'] = metrics['ticket_medio'].map('R${:,.2f}'.format)
+metrics['pct_comparecimento'] = metrics['pct_comparecimento'].astype(float).map('{:.2%}'.format)
+metrics['pct_conversao'] = metrics['pct_conversao'].astype(float).map('{:.2%}'.format)
 
 st.subheader("Métricas por loja")
 st.dataframe(metrics, use_container_width=True)

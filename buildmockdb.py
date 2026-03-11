@@ -75,8 +75,5 @@ def create_db(n=800):
         })
     
     df = pd.DataFrame(dados)
-    df['valor_unitario'] = df['valor_unitario'].map('${:,.2f}'.format)
-    df['valor_total'] = df['valor_total'].map('${:,.2f}'.format)
-    df["data_atendimento"] = pd.to_datetime(df["data_atendimento"])
 
     return df
