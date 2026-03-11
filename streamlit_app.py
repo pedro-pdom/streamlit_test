@@ -21,8 +21,6 @@ def carregar_dados():
 
 df = carregar_dados()
 
-df["data_atendimento"] = pd.to_datetime(df["data_atendimento"])
-
 # -------------------------
 # SIDEBAR FILTROS
 # -------------------------
